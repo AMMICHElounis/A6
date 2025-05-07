@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Adhérent - Connexion et Inscription</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    #registration-box {
+      display: none;
+    }
+    .hidden {
+      display: none !important;
+    }
+  </style>
+  <script>
+    function toggleRegistrationForm() {
+      const loginBox = document.querySelector('.login-box');
+      const regForm = document.getElementById('registration-box');
+
+      loginBox.classList.add('hidden');
+      regForm.style.display = 'block';
+      regForm.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function toggleLoginForm() {
+      const loginBox = document.querySelector('.login-box');
+      const regForm = document.getElementById('registration-box');
+
+      regForm.style.display = 'none';
+      loginBox.classList.remove('hidden');
+      loginBox.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function ajouterChampsCharges() {
+      const nombre = document.getElementById('nombre_charges').value;
+      const container = document.getElementById('charges-container');
+      container.innerHTML = '';
+      for (let i = 0; i < nombre; i++) {
+        container.innerHTML += `
+          <div class="charge">
+            <h4>Personne à charge ${i + 1}</h4>
+            <label>Nom* : <input type="text" name="charge_nom_${i}" required></label>
+            <label>Prénom* : <input type="text" name="charge_prenom_${i}" required></label>
+            <label>Date de naissance* : <input type="date" name="charge_date_naissance_${i}" required></label>
+            <label>Genre* :
+              <select name="charge_genre_${i}" required>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+                <option value="Autre">Autre</option>
+              </select>
+            </label>
+          </div>`;
+      }
+    }
+  </script>
+</head>
+<body>
+  <header>
+    <?php include "includes/header.html"; ?>
+  </header>
+
+  <div class="register-box">
+    <div class="login-box">
+      <h2>Connexion Adhérent</h2>
+      <form action="php/login.php" method="post">
+        <input type="hidden" name="user_type" value="adherent">
+        <label for="login">Nom d'utilisateur ou email* :</label>
+        <input type="text" id="login" name="login" required>
+        <label for="password">Mot de passe* :</label>
+        <input type="password" id="password" name="password" required>
+        <button type="submit">Connexion</button>
+      </form>
+      <div class="toggle-link">
+        <p>Pas encore inscrit ? <a href="javascript:void(0)" onclick="toggleRegistrationForm()">Créer un compte</a></p>
+      </div>
+    </div>
+
+    <div class="register-box" id="registration-box">
+      <h2>Inscription Adhérent</h2>
+      <form action="php/inscription.php" method="post">
+        <label>Nom d'utilisateur* : <input type="text" name="username" required></label>
+        <label>Mot de passe* : <input type="password" name="password" required></label>
+        <label>Nom* : <input type="text" name="nom" required></label>
+        <label>Prénom* : <input type="text" name="prenom" required></label>
+        <label>Email* : <input type="email" name="email" required></label>
+        <label>Téléphone : <input type="text" name="telephone"></label>
+        <label>Date de naissance* : <input type="date" name="date_naissance" required></label>
+        <label>Genre* :
+          <select name="genre" required>
+            <option value="Homme">Homme</option>
+            <option value="Femme">Femme</option>
+            <option value="Autre">Autre</option>
+          </select>
+        </label>
+        <label>Nombre de personnes à charge* :
+          <input type="number" id="nombre_charges" name="nombre_charges" min="0" value="0" required onchange="ajouterChampsCharges()">
+        </label>
+        <div id="charges-container"></div>
+        <input type="hidden" name="role" value="adherent">
+        <button type="submit">S'inscrire</button>
+      </form>
+      <div class="toggle-link">
+        <p>Déjà inscrit ? <a href="javascript:void(0)" onclick="toggleLoginForm()">Retour à la connexion</a></p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <?php include "includes/footer.html"; ?>
+  </footer>
+</body>
+</html>

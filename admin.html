@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Connexion Administrateur</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <?php include "includes/header.html"; ?>
+
+  <main class="container">
+    <div class="login-box">
+      <h2>Connexion Administrateur</h2>
+      <form action="php/login.php" method="post">
+        <input type="hidden" name="user_type" value="admin">
+
+        <label for="login">Nom d'utilisateur ou email</label>
+        <input type="text" id="login" name="login" required>
+
+        <label for="password">Mot de passe</label>
+        <input type="password" id="password" name="password" required>
+
+        <button type="submit">Se connecter</button>
+      </form>
+    </div>
+  </main>
+
+  <?php include "includes/footer.html"; ?>
+  <script src="js/main.js"></script>
+</body>
+</html>

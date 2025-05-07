@@ -1,0 +1,38 @@
+<?php
+session_start();
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Comment faire ?</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <?php include "includes/header.php"; ?>
+
+  <main class="container">
+    <h1>Comment faire ?</h1>
+    <p>Vous trouverez ici toutes les instructions nécessaires pour payer votre cotisation et accéder à votre espace personnel.</p>
+
+    <section class="faq-section">
+      <h2>FAQ</h2>
+
+      <details class="faq-item">
+        <summary><strong>Comment payer ma cotisation ?</strong></summary>
+        <p>Vous pouvez payer votre cotisation en ligne via notre système sécurisé. Les détails se trouvent dans votre espace adhérent après connexion.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary><strong>Comment me connecter ?</strong></summary>
+        <p>Rendez-vous sur la page d'accueil, cliquez sur "Connexion", et entrez vos identifiants pour accéder à votre espace personnel.</p>
+      </details>
+    </section>
+  </main>
+
+  <?php include "includes/footer.php"; ?>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
