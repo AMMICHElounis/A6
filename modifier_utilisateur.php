@@ -1,10 +1,10 @@
 <?php
-include 'php/fonctions.php';
+include '../php/fonctions.php';
 session_start();
-require_once 'php/config.php';
+require_once '../php/config.php';
 
 if (!isset($_SESSION['username']) || $_SESSION['role'] !== 'admin') {
-    header('Location: index.php');
+    header('Location: ../index.php');
     exit();
 }
 
@@ -86,7 +86,7 @@ if (isset($_POST['supprimer_charge'])) {
 <head>
     <meta charset="UTF-8">
     <title>Modifier un utilisateur</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
     <script>
         function toggleCharges() {
             const div = document.getElementById('personnes-charge');
@@ -95,7 +95,7 @@ if (isset($_POST['supprimer_charge'])) {
     </script>
 </head>
 <body>
-<?php include "includes/header.php"; ?>
+<?php include "../includes/header.php"; ?>
 
 <main class="container" >
 
